@@ -28,10 +28,10 @@ When 'fill_order_operation' executing at the moment of market fee calculation th
 
 # Specifications
 
-## 'reward_percent' asset's option
+## reward_percent asset option
 Percent of market fee that will be paid to buyer's registrar. Set by UIA issuer.
 
-## 'market_sharing_whitelist' asset's option
+## market_sharing_whitelist asset option
 TODO An optional whitelist (configurable by the UIA Issuer) could provide increased control over who is eligible to get market rewards.
 
 ## New database and wallet api methods
@@ -39,7 +39,7 @@ TODO An optional whitelist (configurable by the UIA Issuer) could provide increa
 **list_account_rewards(account)** - Returns information about the reward amount in various assets
 **claim_reward(account, asset_symbol, amount)** - Claim account's reward for the given asset.
 
-## `account_reward_object`
+## account_reward_object
 A new BitShares object type in implementation space impl_account_reward_object_type = 2.18.X that tracks the rewards of a single account/asset pair
 ```
 account_reward_object {
@@ -48,7 +48,7 @@ account_reward_object {
     reward_amount
 }
 ```
-## `account_reward_index`
+## account_reward_index
 A new index that stores objects of account_reward_object-type in graphene::database and allow random fast access to objects by given criteria
 ```
 account_reward_index multi-index of account_reward_objects
@@ -57,7 +57,7 @@ indexed_by
     [owner_account, asset_type]
     [asset_type, reward_amount desc, owner_account]
 ```
-## `asset_claim_reward_operation`
+## asset_claim_reward_operation
 A new operation used to transfer reward to the account's balance.
 ```
 asset_claim_reward_operation {
@@ -68,16 +68,16 @@ asset_claim_reward_operation {
 
 ```
 
-## 'graphene::chain::database' new methods
-    get_reward(owner_account, asset_id) - Retrieve a particular account's reward in a given asset
-    adjust_reward(account, delta) - Adjust a particular account's reward in a given asset by a delta
+## graphene::chain::database new methods
+    **get_reward(owner_account, asset_id)** - Retrieve a particular account's reward in a given asset
+    **adjust_reward(account, delta)** - Adjust a particular account's reward in a given asset by a delta
 
-## 'graphene::chain::database' modifications
-    pay_market_fees(seller, recv_asset_object, receives_amount) - Split pay to asset issuer fee and referrer fee (market sharing fee) if referrer is whitelisted.
-    calculate_market_fee(trade_asset, trade_amount)  - Calculate value for previous function.
-    fill_limit_order(order, pays, receives, cull_if_small, fill_price, is_maker) - Append hardfork (HARDFORK_REWARD_TIME) check. Use old or new version of pay_market_fees() function.
+## graphene::chain::database modifications
+    **pay_market_fees(seller, recv_asset_object, receives_amount)** - Split pay to asset issuer fee and referrer fee (market sharing fee) if referrer is whitelisted.
+    **calculate_market_fee(trade_asset, trade_amount)**  - Calculate value for previous function.
+    **fill_limit_order(order, pays, receives, cull_if_small, fill_price, is_maker)** - Append hardfork (HARDFORK_REWARD_TIME) check. Use old or new version of pay_market_fees() function.
 
-## 'asset_create_evaluator' modifications
+## asset_create_evaluator modifications
     Append hardfork (HARDFORK_REWARD_TIME) check. Validate additional asset options. Apply additional asset options (reward_percent, TODO: market_sharing_whitelist)
 
 ## Unit tests
@@ -88,12 +88,10 @@ Modified:  fee_tests.cpp, uia_tests.cpp
 
 
 # Summary for Shareholders
-Данная модификация будет интересна в первую очередь владельцам активов. Новый инструмент - market fee sharing - позволит привлечь новых клиентов за счет делегирования это задачи рефералам и увеличить объемы торгов с минимальными техническими затратами. 
+The new modification - market fee sharing - will allow to bring in new clients for BitShares by making it financially lucrative for registrars and referrers. This modification is interesting mostly so asset issuers and registrars. 
 
 # Copyright
-
 This document is placed in the public domain.
 
 # Sponsoring
-
 This worker proposal is presented by OpenLedger
