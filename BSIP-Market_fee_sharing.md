@@ -4,8 +4,8 @@ Title: Market fee sharing
 Authors: OpenLedger
 Status:
 Type:
-Created: 2018-08-13
-Discussion: https://github.com/bitshares/bitshares-core/issues/yyyyy
+Created: 2018-08-23
+Discussion: 
 Worker:
 ```
  
@@ -103,7 +103,7 @@ Add: reward_tests.cpp (asset_rewards_test, asset_claim_reward_test)
 
 Modified: fee_tests.cpp, uia_tests.cpp
 
-
+# Description
 
 # Summary for Shareholders
 The new modification - market fee sharing - will allow to bring in new clients for BitShares by making it financially lucrative for registrars and referrers. This modification is interesting mostly so asset issuers and registrars/referrers.
@@ -111,7 +111,6 @@ The new modification - market fee sharing - will allow to bring in new clients f
 
 # Copyright
 This document is placed in the public domain.
- 
 
-# Sponsoring
-This BSIP is presented by OpenLedger
+# See Also
+https://github.com/bitshares/bitshares-core/issues/1268
