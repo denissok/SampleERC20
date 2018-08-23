@@ -52,32 +52,33 @@ Percent of market fee that will be paid to buyer's registrar. Set by UIA issuer.
 
 ## account_reward_object
 A new BitShares object type in implementation space impl_account_reward_object_type = 2.18.X that tracks the rewards of a single account/asset pair
+```
 account_reward_object {
     owner_account,
     asset_type,
     reward_amount
 }
-
+```
 ## account_reward_index
 A new index that stores objects of account_reward_object-type in graphene::database and allow random fast access to objects by given criteria
-
+```
 account_reward_index multi-index of account_reward_objects
 indexed_by
     [id]
     [owner_account, asset_type]
     [asset_type, reward_amount desc, owner_account]
-
+```
 ## asset_claim_reward_operation
 A new operation used to transfer reward to the account's balance.
-
+```
 asset_claim_reward_operation {
     fee
     claiming_account
     amount_to_claim
 }
-
+```
  
-
+ 
 
 ## graphene::chain::database new methods
 **get_reward(owner_account, asset_id)** - Retrieve a particular account's reward in a given asset
