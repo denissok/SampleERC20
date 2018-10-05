@@ -1,0 +1,63 @@
+{
+    "projectName": "Blocser",
+    "active": boolean,
+    "logo": "",
+    "shortDescription":"",
+    "longDescription":"",
+    "links": {
+        "whitePaper":"",
+        "website":""
+    },
+    "contribute":"",
+    "socials": {  
+        "facebook": "",
+        "twitter": "",
+        "google": "",
+        "vk": "",
+        "linkedin":"",
+        "instagram":"",
+        "github":"",
+        "youtube":"",
+        "telegram":"",
+        "medium":"",
+        "bitcointalk":""
+    },
+    "startDate": "YYYY-MM-DD hh:mm:ss +n"|"YYYY-MM-DD +n",//Offset to UTC for phases and subphases times. Value: 3 (for +3 hours to UTC) or -2 (for -2 hours to UTC)
+    "endDate": "YYYY-MM-DD hh:mm:ss +n"|"YYYY-MM-DD +n",
+    "tokenSymbol": "OPEN.ZZZ"
+    "baseCurrency": "USD",
+    "targetCap": float,
+    "assets": [
+        "OPEN.BTC",
+        "OPEN.LTC",
+        "OPEN.ETH",
+        ...
+    ],
+    "whitelistAmount":"", //Amount in butUSD that a user needs to sent to OpenLedger to be added to Whitelist
+    "currentPhase":"",
+    "phases": {
+        "phase1": {
+            "startDate": "YYYY-MM-DD hh:mm:ss +n"|"YYYY-MM-DD +n",//Offset to UTC for phases and subphases times. Value: 3 (for +3 hours to UTC) or -2 (for -2 hours to UTC)
+            "whitelistDays":"",//Number of days in the beginning of the phase that only whitelist people can buy. 
+            "softCapToken": float, // phase soft cap in tokens
+            "softCapBase": float, // phase soft cap in base currency
+            "availableToBuy": boolean,
+            "currentSubphase":"",           
+            "subphases": {
+                "subphase1.1": {
+                    "endDate": "YYYY-MM-DD hh:mm:ss +n"|"YYYY-MM-DD +n",                
+                    "hardCapToken": float, // subphase hard cap in tokens
+                    "hardCapBase": float, // subphase hard cap in base currency        
+                    "basePrice": float
+                    "mode": "bonus"|"discount"|"none",
+                    "percent": float,
+                    "minBaseAmount": float, // minimum amount in base currency to take part in sale (inclusive),
+                    "minTokenAmount": float, // minimum token amount to take part in sale (inclusive),
+                },
+                ...
+            }
+        },
+        ...
+    },
+
+    }
